@@ -75,4 +75,31 @@ public class VarastoTest {
         varasto = new Varasto(-1,-1);
         varasto.toString();
     }
+    
+    @Test
+    public void negatiivistaEiVoilisätä() {
+        varasto.lisaaVarastoon(-1);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void ylimääräHukkaan() {
+        varasto.lisaaVarastoon(20);
+        assertEquals(10, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void negatiivistaEiVoiOttaa() {
+        varasto.lisaaVarastoon(8);
+        varasto.otaVarastosta(-1);
+        assertEquals(8, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void otetaanMitäSaadaan() {
+        varasto.lisaaVarastoon(8);
+        double saatuMaara = varasto.otaVarastosta(10);
+        assertEquals(8, saatuMaara, vertailuTarkkuus);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
 }
