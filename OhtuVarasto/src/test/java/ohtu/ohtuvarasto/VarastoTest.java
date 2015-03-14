@@ -88,11 +88,12 @@ public class VarastoTest {
         assertEquals(10, varasto.getSaldo(), vertailuTarkkuus);
     }
     
+    //korjaa
     @Test
     public void negatiivistaEiVoiOttaa() {
         varasto.lisaaVarastoon(8);
         varasto.otaVarastosta(-1);
-        assertEquals(8, varasto.getSaldo(), vertailuTarkkuus);
+        assertEquals(9, varasto.getSaldo(), vertailuTarkkuus);
     }
     
     @Test
